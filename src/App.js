@@ -1,10 +1,10 @@
 import 'firebase/analytics';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import './App.css';
 import { AuthContext } from './context';
-import { useItemsApi } from './hooks';
+import { useItems, useItemsApi } from './hooks';
 import logo from './logo.svg';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -20,12 +20,6 @@ const firebaseConfig = {
 
 // Configure FirebaseUI.
 const uiConfig = {
-    // Popup signin flow rather than redirect flow.
-    // signInFlow: 'popup',
-    // popupMode: false,
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    // signInSuccessUrl: '/signedIn',
-    // We will display Google and Facebook as auth providers.
     // signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.GithubAuthProvider.PROVIDER_ID]
     signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID]
 };
@@ -36,7 +30,25 @@ if (firebase.apps.length === 0) {
 
 function App() {
     const { user, signIn, signOut } = useContext(AuthContext);
-    const { addItem, getItems, removeItem, updateItem } = useItemsApi();
+    const { createItem, readItems, updateItem, deleteItem } = useItemsApi();
+    // const { data, loading, error } = useItems();
+
+    useEffect(() => {
+        if (!user) return;
+
+        const test = async () => {
+            let id = await createItem({
+                text: 'Hello world!'
+            });
+            console.log('useItemsApi', id);
+            let items = await readItems();
+            console.log('useItemsApi', items);
+        };
+
+        test();
+    }, [user, createItem, readItems]);
+
+    // console.log('useItems', data, loading, error);
 
     if (!user) {
         return (

@@ -19,7 +19,7 @@ const useItemsApi = () => {
     const db = firebase.firestore();
     const collection = db.collection(COLLECTION_NAME);
 
-    const addItem = async (text) => {
+    const createItem = async ({ text }) => {
         try {
             let now = new Date();
             let docRef = await collection.add({ userId: user.uid, text, createdAt: now, updatedAt: now });
@@ -29,7 +29,7 @@ const useItemsApi = () => {
         }
     };
 
-    const getItems = async () => {
+    const readItems = async () => {
         try {
             let snapshot = await collection.where('userId', '==', user.uid).orderBy('updatedAt', 'desc').get();
             return snapshot.docs.map(documentDataToItem);
@@ -38,15 +38,7 @@ const useItemsApi = () => {
         }
     };
 
-    const removeItem = async (id) => {
-        try {
-            await collection.doc(id).delete();
-        } catch (e) {
-            return Promise.reject(e);
-        }
-    };
-
-    const updateItem = async (id, item) => {
+    const updateItem = async ({ id, item }) => {
         let { id: _, userId, createdAt, updatedAt, ...data } = item;
         try {
             await collection.doc(id).update({ ...data });
@@ -55,7 +47,15 @@ const useItemsApi = () => {
         }
     };
 
-    return { addItem, getItems, removeItem, updateItem };
+    const deleteItem = async ({ id }) => {
+        try {
+            await collection.doc(id).delete();
+        } catch (e) {
+            return Promise.reject(e);
+        }
+    };
+
+    return { createItem, readItems, updateItem, deleteItem };
 };
 
 export default useItemsApi;

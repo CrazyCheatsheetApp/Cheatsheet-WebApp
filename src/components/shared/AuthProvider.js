@@ -4,7 +4,7 @@ import firebase from 'firebase';
 
 const signIn = async () => {
     try {
-        await firebase.auth().signin
+        await firebase.auth().signin;
     } catch (e) {
         return Promise.reject(e);
     }
@@ -37,8 +37,6 @@ const AuthProvider = ({ children }) => {
         signOut,
         user
     };
-
-    console.log('contextValue', contextValue)
 
     return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
