@@ -6,13 +6,7 @@ import Header from "./components/Header";
 
 const App = () => {
 
-  const [notes, setNotes] = useState([
-    // {
-    // id: nanoid(),
-    // text: `There's no place like 127.0.01`,
-    // date: ''
-    // }
-  ]);
+  const [notes, setNotes] = useState([]);
 
   const [searchText, setSearchText] = useState('');
 
