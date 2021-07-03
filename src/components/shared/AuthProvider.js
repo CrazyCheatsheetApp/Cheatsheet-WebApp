@@ -18,6 +18,14 @@ const signOut = async () => {
     }
 };
 
+const register = async (email, password) => {
+    try {
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+};
+
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
@@ -35,6 +43,7 @@ const AuthProvider = ({ children }) => {
     const contextValue = {
         signIn,
         signOut,
+        register,
         user
     };
 
