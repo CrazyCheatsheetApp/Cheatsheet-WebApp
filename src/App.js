@@ -19,9 +19,7 @@ const firebaseConfig = {
 
 // Configure FirebaseUI.
 const uiConfig = {
-    signInFlow: 'popup',
-    // signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.GithubAuthProvider.PROVIDER_ID]
-    signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID]
+    signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
 };
 
 if (firebase.apps.length === 0) {
@@ -30,7 +28,7 @@ if (firebase.apps.length === 0) {
 
 const App = () => {
     const [searchText, setSearchText] = useState('');
-    const { user } = useContext(AuthContext);
+    const { user, signOut } = useContext(AuthContext);
 
     if (!user) {
         return (
@@ -44,6 +42,7 @@ const App = () => {
 
     return (
         <div className="container">
+            <button onClick={signOut}>Signout</button>
             <Header />
             <Search handleSearchNote={setSearchText} />
             <NoteListContainer search={searchText} />
