@@ -1,16 +1,17 @@
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 import TimeAgo from 'react-timeago';
 
 const Note = ({ id, text, date, handleDeleteNote }) => {
     return (
         <div className="note grow-note">
-            <span>{text}</span>
+            <div className="note-header">
+                <span>{text}</span>
+                <MdDelete onClick={() => handleDeleteNote(id)} className="grow-delete delete-icon" size="1.3em" />
+            </div>
             <div className="note-footer">
                 <small>
                     <TimeAgo date={date} />
-                </small>
-                <small></small>
-                <MdDeleteForever onClick={() => handleDeleteNote(id)} className="grow delete-icon" size="1.3em" />
+                </small>   
             </div>
         </div>
     );
