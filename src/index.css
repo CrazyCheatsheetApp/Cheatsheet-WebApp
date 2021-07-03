@@ -83,6 +83,7 @@ textarea:focus {
 .note-header {
   display: flex;
   justify-content: space-between;
+  word-break: break-all;
 }
 
 .note-footer {
@@ -92,13 +93,14 @@ textarea:focus {
 }
 
 .delete-icon {
-    opacity: .5;
+    color: white;
+    opacity: .3;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
 .delete-icon:hover {
-    color: red;
+    opacity: 1;
 }
 
 .grow {
