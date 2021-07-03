@@ -28,7 +28,7 @@ if (firebase.apps.length === 0) {
 
 const App = () => {
     const [searchText, setSearchText] = useState('');
-    const { user, signOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     if (!user) {
         return (
@@ -42,7 +42,6 @@ const App = () => {
 
     return (
         <div className="container">
-            <button onClick={signOut}>Signout</button>
             <Header />
             <Search handleSearchNote={setSearchText} />
             <NoteListContainer search={searchText} />
