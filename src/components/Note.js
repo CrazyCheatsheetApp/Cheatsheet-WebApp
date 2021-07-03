@@ -1,17 +1,15 @@
 import { MdDeleteForever } from 'react-icons/md';
+import dateFormat from 'dateformat';
 
 const Note = ({ id, text, date, handleDeleteNote }) => {
     return (
-        <div className='note'>
+        <div className="note">
             <span>{text}</span>
-            <div className='note-footer'>
-                <small>{date}</small>
-                <MdDeleteForever 
-                onClick={() => handleDeleteNote(id)} 
-                className='grow delete-icon' 
-                size='1.3em'/>
-            </div>  
-        </div>  
+            <div className="note-footer">
+                <small>{dateFormat(date)}</small>
+                <MdDeleteForever onClick={() => handleDeleteNote(id)} className="grow delete-icon" size="1.3em" />
+            </div>
+        </div>
     );
 };
 

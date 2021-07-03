@@ -1,56 +1,52 @@
-import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
-import NoteList from "./components/NoteList";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { useContext, useState } from 'react';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import NoteListContainer from './components/NoteListContainer';
 import Search from './components/search';
-import Header from "./components/Header";
+import { AuthContext } from './context';
+
+const firebaseConfig = {
+    apiKey: 'AIzaSyA2dtJug4PcxPzt1f3cs4fbJ-shcYICuCY',
+    authDomain: 'crazycheatsheetapp.firebaseapp.com',
+    projectId: 'crazycheatsheetapp',
+    storageBucket: 'crazycheatsheetapp.appspot.com',
+    messagingSenderId: '780015384193',
+    appId: '1:780015384193:web:5ee1bfaf99c412a9a13f80',
+    measurementId: 'G-H2MHM11CZV'
+};
+
+// Configure FirebaseUI.
+const uiConfig = {
+    // signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.GithubAuthProvider.PROVIDER_ID]
+    signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID]
+};
+
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+}
 
 const App = () => {
+    // const [notes, setNotes] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const { user, signIn, signOut } = useContext(AuthContext);
 
-  const [notes, setNotes] = useState([]);
-
-  const [searchText, setSearchText] = useState('');
-
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
-      if (savedNotes) {
-        setNotes(savedNotes);
-      }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('react-notes-app-data', JSON.stringify(notes))
-  }, [notes]);
-
-  const addNote = (text) => {
-    const date = new Date();
-    const newNote = {
-      id: nanoid(),
-      text: text,
-      date: date.toLocaleDateString()
+    if (!user) {
+        return (
+            <StyledFirebaseAuth
+                className={{ position: 'fixed', top: 0 }}
+                uiConfig={uiConfig}
+                firebaseAuth={firebase.auth()}
+            />
+        );
     }
-    const newNotes = [...notes, newNote];
-    setNotes(newNotes);
-  }
 
-  const deleteNote = (id) => {
-    const newNotes = notes.filter((note) => note.id !== id)
-    setNotes(newNotes);
-  }
-
-  return (
-    <div className={`${darkMode && 'dark-mode'}`}>
-      <div className='container'>
-        <Header handleToggleDarkMode={setDarkMode}/>
-        <Search handleSearchNote={setSearchText}/>
-        <NoteList 
-        notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} 
-        handleAddNote={addNote} 
-        handleDeleteNote={deleteNote}/>  
-      </div> 
-    </div>
-  )
-}
+    return (
+        <div className="container">
+            <Search handleSearchNote={setSearchText} />
+            <NoteListContainer search={searchText} />
+        </div>
+    );
+};
 
 export default App;
