@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { AuthContext } from '../../context';
 import firebase from 'firebase';
 
-const signIn = async () => {
+const signIn = async (email, password) => {
     try {
-        await firebase.auth().signin;
+        await firebase.auth().signInWithEmailAndPassword(email, password);
     } catch (e) {
         return Promise.reject(e);
     }
