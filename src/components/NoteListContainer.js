@@ -18,9 +18,19 @@ const NoteListContainer = ({ search }) => {
     };
 
     const copyNote = (text) => {
-        navigator.clipboard.writeText(text)
-    }
-
+        // If running in an iframe, use message passing
+        if (window.location !== window.parent.location) {
+            window.parent.postMessage(
+                JSON.stringify({
+                    action: 'write-clipboard',
+                    text
+                }),
+                '*'
+            );
+        } else {
+            navigator.clipboard.writeText(text);
+        }
+    };
 
     if (loading) {
         return (
@@ -42,7 +52,15 @@ const NoteListContainer = ({ search }) => {
         notes.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     }
 
-    return <NoteList filter={'searchText'} notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} handleCopyNote={copyNote}/>;
+    return (
+        <NoteList
+            filter={'searchText'}
+            notes={notes}
+            handleAddNote={addNote}
+            handleDeleteNote={deleteNote}
+            handleCopyNote={copyNote}
+        />
+    );
 };
 
 export default NoteListContainer;
