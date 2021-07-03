@@ -30,10 +30,11 @@ const NoteListContainer = ({ search }) => {
     }
 
     let notes = data;
-    if (search) {
-        notes = matchSorter(data, search, {
+    if (search.trim()) {
+        notes = matchSorter(data, search.trim(), {
             keys: ['text']
         });
+        notes.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     }
 
     return <NoteList filter={'searchText'} notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />;
