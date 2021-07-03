@@ -3,7 +3,7 @@ import TimeAgo from 'react-timeago';
 
 const Note = ({ id, text, date, handleDeleteNote }) => {
     return (
-        <div className="note">
+        <div className="note grow-note">
             <span>{text}</span>
             <div className="note-footer">
                 <small>

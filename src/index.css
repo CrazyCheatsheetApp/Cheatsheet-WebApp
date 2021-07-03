@@ -11,17 +11,14 @@ code {
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dark-mode {
-    background-color: #222122;
-}
-
-.dark-mode h1 {
-    color: white;
+.header h1 {
+  color: #67d7cc;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .container {
@@ -100,6 +97,14 @@ textarea:focus {
     transform: scale(1.1);
 }
 
+.grow-note { 
+  transition: all .2s ease-in-out; 
+  }
+  
+.grow-note:hover { 
+transform: scale(1.03); 
+}
+
 .search {
     display: flex;
     align-items: center;
@@ -111,9 +116,10 @@ textarea:focus {
 }
 
 .search input {
-    border: none;
-    background-color: #ededed;
-    margin-left: 5px;
+  border: none;
+  background-color: #ededed;
+  margin-left: 5px;
+  width: 100%;
 }
 
 .search input:focus {

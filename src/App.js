@@ -27,7 +27,6 @@ if (firebase.apps.length === 0) {
 }
 
 const App = () => {
-    // const [notes, setNotes] = useState([]);
     const [searchText, setSearchText] = useState('');
     const { user, signIn, signOut } = useContext(AuthContext);
 

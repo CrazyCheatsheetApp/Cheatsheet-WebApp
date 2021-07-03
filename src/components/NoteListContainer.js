@@ -29,7 +29,12 @@ const NoteListContainer = ({ search }) => {
         return <pre>Woops, something went wrong.</pre>;
     }
 
-    const notes = matchSorter(data, search, { keys: ['text'] });
+    let notes = data;
+    if (search) {
+        notes = matchSorter(data, search, {
+            keys: ['text']
+        });
+    }
 
     return <NoteList filter={'searchText'} notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />;
 };
