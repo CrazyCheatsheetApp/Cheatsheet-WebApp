@@ -157,7 +157,7 @@ textarea:focus {
 
 .signOut {
     color: white;
-    background-color: #5E1E6D;
+    background-color: #006DB7;
     border: none;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
@@ -167,4 +167,8 @@ textarea:focus {
 
 .signOut:hover {
     cursor: pointer;
+}
+
+.time {
+    opacity: 0.5;
 }

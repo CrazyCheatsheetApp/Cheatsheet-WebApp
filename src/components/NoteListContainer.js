@@ -17,6 +17,11 @@ const NoteListContainer = ({ search }) => {
         refresh();
     };
 
+    const copyNote = (text) => {
+        navigator.clipboard.writeText(text)
+    }
+
+
     if (loading) {
         return (
             <div className="flex justify-content-center">
@@ -37,7 +42,7 @@ const NoteListContainer = ({ search }) => {
         notes.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     }
 
-    return <NoteList filter={'searchText'} notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />;
+    return <NoteList filter={'searchText'} notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} handleCopyNote={copyNote}/>;
 };
 
 export default NoteListContainer;
