@@ -5,6 +5,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import NoteListContainer from './components/NoteListContainer';
 import Search from './components/search';
 import { AuthContext } from './context';
+import Header from './components/Header';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyA2dtJug4PcxPzt1f3cs4fbJ-shcYICuCY',
@@ -42,6 +43,7 @@ const App = () => {
 
     return (
         <div className="container">
+            <Header />
             <Search handleSearchNote={setSearchText} />
             <NoteListContainer search={searchText} />
         </div>
