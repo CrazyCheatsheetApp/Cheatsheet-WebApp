@@ -19,7 +19,7 @@ code {
 }
 
 .header h1 {
-    color: #006DB7;
+    color: #006db7;
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -56,12 +56,12 @@ textarea:focus {
 
 .save {
     color: white;
-    background-color: #006DB7;
+    background-color: #006db7;
     border: none;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     height: 25px;
-    width: 75px; 
+    width: 75px;
 }
 
 .save:hover {
@@ -81,9 +81,9 @@ textarea:focus {
 }
 
 .note-header {
-  display: flex;
-  justify-content: space-between;
-  word-break: break-all;
+    display: flex;
+    justify-content: space-between;
+    word-break: break-all;
 }
 
 .note-footer {
@@ -94,7 +94,7 @@ textarea:focus {
 
 .delete-icon {
     color: white;
-    opacity: .3;
+    opacity: 0.3;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
@@ -120,11 +120,11 @@ textarea:focus {
 }
 
 .grow-delete {
-  transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .grow-delete:hover {
-  transform: scale(1.3);
+    transform: scale(1.3);
 }
 
 .search {
@@ -155,14 +155,18 @@ textarea:focus {
     justify-content: center;
 }
 
+.flex.align-items-center {
+    align-items: center;
+}
+
 .signOut {
     color: white;
-    background-color: #006DB7;
+    background-color: #006db7;
     border: none;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     height: 25px;
-    width: 75px; 
+    width: 75px;
 }
 
 .signOut:hover {
@@ -171,4 +175,8 @@ textarea:focus {
 
 .time {
     opacity: 0.5;
+}
+
+.fh {
+    height: 100vh;
 }

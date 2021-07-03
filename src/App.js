@@ -2,10 +2,11 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useContext, useState } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { Ripple } from 'react-spinners-css';
+import Header from './components/Header';
 import NoteListContainer from './components/NoteListContainer';
 import Search from './components/search';
 import { AuthContext } from './context';
-import Header from './components/Header';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyA2dtJug4PcxPzt1f3cs4fbJ-shcYICuCY',
@@ -28,7 +29,15 @@ if (firebase.apps.length === 0) {
 
 const App = () => {
     const [searchText, setSearchText] = useState('');
-    const { user } = useContext(AuthContext);
+    const { loading, user } = useContext(AuthContext);
+
+    if (loading) {
+        return (
+            <div className="flex justify-content-center align-items-center fh">
+                <Ripple color="#d1c4e9" />
+            </div>
+        );
+    }
 
     if (!user) {
         return (

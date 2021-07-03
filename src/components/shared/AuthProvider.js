@@ -27,14 +27,23 @@ const register = async (email, password) => {
 };
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [state, setState] = useState({
+        user: null,
+        loading: true
+    });
 
     useEffect(() => {
         const unsubscribe = firebase.auth().onAuthStateChanged((userDoc) => {
             if (userDoc) {
-                setUser(userDoc);
+                setState({
+                    user: userDoc,
+                    loading: false
+                });
             } else {
-                setUser(null);
+                setState({
+                    user: null,
+                    loading: false
+                });
             }
         });
         return () => unsubscribe();
@@ -44,7 +53,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         signOut,
         register,
-        user
+        ...state
     };
 
     return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
