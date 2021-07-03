@@ -21,7 +21,6 @@ code {
 .header h1 {
   color: white;
   font-family: 'Orbitron', sans-serif;
-  padding-top: 24px;
 }
 
 .container {
@@ -48,6 +47,7 @@ textarea {
   border: none;
   resize: none;
   background-color: #252526;
+  color: white;
 }
 
 textarea:focus {
@@ -55,16 +55,15 @@ textarea:focus {
 }
 
 .save {
-
+  font-family: 'Orbitron', sans-serif;
   color: white;
   background-color: #4e33ff;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 10px 5px 10px;
 }
 
 .save:hover {
-    background-color: #ededed;
     cursor: pointer;
 }
 
@@ -118,7 +117,6 @@ transform: scale(1.03);
     border-radius: 10px;
     padding: 5px;
     margin-bottom: 1.5em;
-    margin-top: 1.5em;
 }
 
 .search input {
