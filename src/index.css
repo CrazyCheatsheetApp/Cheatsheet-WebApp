@@ -1,11 +1,10 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #1E1E1E;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #1e1e1e;
 }
 
 code {
@@ -13,14 +12,15 @@ code {
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header h1 {
-  color: white;
-  font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    padding-top: 24px;
 }
 
 .container {
@@ -39,15 +39,14 @@ code {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-.note.new{
-  background-color: #252526;
+.note.new {
+    background-color: #252526;
 }
 
 textarea {
-  border: none;
-  resize: none;
-  background-color: #252526;
-  color: white;
+    border: none;
+    resize: none;
+    background-color: #252526;
 }
 
 textarea:focus {
@@ -55,12 +54,11 @@ textarea:focus {
 }
 
 .save {
-  font-family: 'Orbitron', sans-serif;
-  color: white;
-  background-color: #4e33ff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+    color: white;
+    background-color: #4e33ff;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
 }
 
 .save:hover {
@@ -68,15 +66,15 @@ textarea:focus {
 }
 
 .note {
-  color: white;
-  background-color: #252526;
-  border-radius: 10px;
-  padding: 1rem;
-  min-height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  white-space: pre-wrap;
+    color: white;
+    background-color: #252526;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: pre-wrap;
 }
 
 .note-footer {
@@ -95,19 +93,19 @@ textarea:focus {
 }
 
 .grow {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .grow:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-.grow-note { 
-  transition: all .2s ease-in-out; 
-  }
-  
-.grow-note:hover { 
-transform: scale(1.03); 
+.grow-note {
+    transition: all 0.1s ease-in-out;
+}
+
+.grow-note:hover {
+    transform: scale(1.01);
 }
 
 .search {
@@ -120,10 +118,10 @@ transform: scale(1.03);
 }
 
 .search input {
-  border: none;
-  background-color: #ededed;
-  margin-left: 5px;
-  width: 100%;
+    border: none;
+    background-color: #ededed;
+    margin-left: 5px;
+    width: 100%;
 }
 
 .search input:focus {
