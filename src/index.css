@@ -47,6 +47,7 @@ textarea {
     border: none;
     resize: none;
     background-color: #252526;
+    color: white;
 }
 
 textarea:focus {
@@ -57,8 +58,10 @@ textarea:focus {
     color: white;
     background-color: #4e33ff;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 5px 10px 5px 10px;
+    height: 25px;
+    width: 75px; 
 }
 
 .save:hover {
@@ -77,6 +80,11 @@ textarea:focus {
     white-space: pre-wrap;
 }
 
+.note-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .note-footer {
     display: flex;
     align-items: center;
@@ -89,7 +97,7 @@ textarea:focus {
 }
 
 .delete-icon:hover {
-    color: red;
+    color: #ffd633;
 }
 
 .grow {
