@@ -28,7 +28,7 @@ if (firebase.apps.length === 0) {
 
 const App = () => {
     const [searchText, setSearchText] = useState('');
-    const { user, signIn, signOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     if (!user) {
         return (
