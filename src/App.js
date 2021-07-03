@@ -19,6 +19,7 @@ const firebaseConfig = {
 
 // Configure FirebaseUI.
 const uiConfig = {
+    signInFlow: 'popup',
     // signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.GithubAuthProvider.PROVIDER_ID]
     signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID]
 };
