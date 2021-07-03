@@ -6,7 +6,7 @@ const Note = ({ id, text, date, handleDeleteNote }) => {
         <div className="note grow-note">
             <div className="note-header">
                 <span>{text}</span>
-                <MdDelete onClick={() => handleDeleteNote(id)} className="grow delete-icon" size="1.3em" />
+                <MdDelete onClick={() => handleDeleteNote(id)} className="grow-delete delete-icon" size="1.3em" />
             </div>
             <div className="note-footer">
                 <small>

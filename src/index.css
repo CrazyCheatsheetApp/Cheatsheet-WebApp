@@ -97,7 +97,7 @@ textarea:focus {
 }
 
 .delete-icon:hover {
-    color: #ffd633;
+    color: rgba(206, 54, 54, 0.886);
 }
 
 .grow {
@@ -114,6 +114,14 @@ textarea:focus {
 
 .grow-note:hover {
     transform: scale(1.01);
+}
+
+.grow-delete {
+  transition: all 0.1s ease-in-out;
+}
+
+.grow-delete:hover {
+  transform: scale(1.3);
 }
 
 .search {
