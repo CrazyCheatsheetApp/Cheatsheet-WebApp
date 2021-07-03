@@ -31,7 +31,6 @@ code {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
-    min-height: 100vh;
 }
 
 .notes-list {
@@ -85,12 +84,14 @@ textarea:focus {
     display: flex;
     justify-content: space-between;
     word-break: break-word;
+    padding-bottom: 20px;
 }
 
 .note-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 12px;
 }
 
 .delete-icon {
