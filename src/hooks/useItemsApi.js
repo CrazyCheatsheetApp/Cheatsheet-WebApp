@@ -7,7 +7,7 @@ const documentDataToItem = (doc) => {
     return {
         id: doc.id,
         createdAt: createdAt.toDate(),
-        updatedAt: createdAt.toDate(),
+        updatedAt: updatedAt.toDate(),
         ...data
     };
 };
@@ -40,8 +40,9 @@ const useItemsApi = () => {
 
     const updateItem = async ({ id, item }) => {
         let { id: _, userId, createdAt, updatedAt, ...data } = item;
+        // TODO: updatedAt time should be set server-side
         try {
-            await collection.doc(id).update({ ...data });
+            await collection.doc(id).update({ ...data, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
         } catch (e) {
             return Promise.reject(e);
         }
