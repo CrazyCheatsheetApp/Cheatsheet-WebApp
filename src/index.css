@@ -52,6 +52,7 @@ textarea {
     resize: none;
     background-color: #252526;
     color: white;
+    width: 100%;
 }
 
 textarea:focus {
