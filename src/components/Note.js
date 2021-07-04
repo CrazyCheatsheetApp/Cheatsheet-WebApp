@@ -17,7 +17,6 @@ const Note = ({ id, text, date, handleDeleteNote, handleCopyNote }) => {
     });
 
     const handleUpdate = debounce((text, updatedAt) => {
-        console.log('update', text, updatedAt);
         // #TODO Fix debounce not working
         updateItem({
             id,

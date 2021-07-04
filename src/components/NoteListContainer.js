@@ -2,10 +2,15 @@ import { useItems, useItemsApi } from '../hooks';
 import { Ripple } from 'react-spinners-css';
 import NoteList from './NoteList';
 import { matchSorter } from 'match-sorter';
+import { useEffect } from 'react';
 
 const NoteListContainer = ({ search }) => {
     const { data, loading, error, refresh } = useItems();
     const { createItem, deleteItem } = useItemsApi();
+
+    useEffect(() => {
+        refresh();
+    }, [search]);
 
     const addNote = async (text) => {
         await createItem({ text });
