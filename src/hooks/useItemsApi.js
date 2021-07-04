@@ -38,11 +38,10 @@ const useItemsApi = () => {
         }
     };
 
-    const updateItem = async ({ id, item }) => {
-        let { id: _, userId, createdAt, updatedAt, ...data } = item;
+    const updateItem = async ({ id, text }) => {
         // TODO: updatedAt time should be set server-side
         try {
-            await collection.doc(id).update({ ...data, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+            await collection.doc(id).update({ text, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
         } catch (e) {
             return Promise.reject(e);
         }

@@ -1,7 +1,7 @@
 import AddNote from './AddNote';
 import Note from './Note';
 
-const NoteListContainer = ({ notes, handleAddNote, handleDeleteNote, handleCopyNote }) => {
+const NoteListContainer = ({ notes, handleAddNote, handleDeleteNote, handleCopyNote, handleUpdate }) => {
     return (
         <div className="notes-list">
             <AddNote handleAddNote={handleAddNote} />
@@ -12,6 +12,7 @@ const NoteListContainer = ({ notes, handleAddNote, handleDeleteNote, handleCopyN
                     date={note.updatedAt}
                     handleDeleteNote={handleDeleteNote}
                     handleCopyNote={handleCopyNote}
+                    handleUpdate={handleUpdate}
                     key={note.id}
                 />
             ))}

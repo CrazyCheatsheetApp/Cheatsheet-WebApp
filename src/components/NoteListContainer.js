@@ -1,29 +1,31 @@
-import { useItems, useItemsApi } from '../hooks';
-import { Ripple } from 'react-spinners-css';
-import NoteList from './NoteList';
+import debounce from 'debounce';
 import { matchSorter } from 'match-sorter';
 import { useEffect } from 'react';
+import { Ripple } from 'react-spinners-css';
+import { useItems, useItemsApi } from '../hooks';
+import NoteList from './NoteList';
 
+// #TODO: Only reload items that have changed
 const NoteListContainer = ({ search }) => {
     const { data, loading, error, refresh } = useItems();
-    const { createItem, deleteItem } = useItemsApi();
+    const { createItem, deleteItem, updateItem } = useItemsApi();
 
     useEffect(() => {
         refresh();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search]);
 
-    const addNote = async (text) => {
+    const handleAddNote = async (text) => {
         await createItem({ text });
         refresh();
     };
 
-    const deleteNote = async (id) => {
+    const handleDeleteNote = async (id) => {
         await deleteItem({ id });
         refresh();
     };
 
-    const copyNote = (text) => {
+    const handleCopyNote = (text) => {
         // If running in an iframe, use message passing
         if (window.location !== window.parent.location) {
             window.parent.postMessage(
@@ -37,6 +39,11 @@ const NoteListContainer = ({ search }) => {
             navigator.clipboard.writeText(text);
         }
     };
+
+    const handleUpdate = debounce(async (item) => {
+        await updateItem(item);
+        refresh();
+    }, 1000);
 
     if (loading) {
         return (
@@ -62,9 +69,10 @@ const NoteListContainer = ({ search }) => {
         <NoteList
             filter={'searchText'}
             notes={notes}
-            handleAddNote={addNote}
-            handleDeleteNote={deleteNote}
-            handleCopyNote={copyNote}
+            handleAddNote={handleAddNote}
+            handleDeleteNote={handleDeleteNote}
+            handleCopyNote={handleCopyNote}
+            handleUpdate={handleUpdate}
         />
     );
 };
