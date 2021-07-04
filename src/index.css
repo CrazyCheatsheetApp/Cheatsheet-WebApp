@@ -32,7 +32,8 @@ code {
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
-    padding-right: calc(100vw - 100%);
+    padding-left: 8px;
+    padding-right: calc(100vw - 100% + 8px);
     padding-bottom: 15px;
 }
 
