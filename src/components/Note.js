@@ -50,7 +50,7 @@ const Note = ({ id, text, date, handleDeleteNote, handleCopyNote }) => {
             </div>
             <div className="note-footer">
                 {saving ? <div className="time">Saving...</div> : <TimeAgo className="time" date={updatedAt} />}
-                <MdContentCopy className="copy delete-icon" onClick={() => handleCopyNote(text)} />
+                <MdContentCopy className="copy delete-icon" onClick={() => handleCopyNote(content)} />
             </div>
         </div>
     );
