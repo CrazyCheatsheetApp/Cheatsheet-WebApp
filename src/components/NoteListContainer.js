@@ -10,6 +10,7 @@ const NoteListContainer = ({ search }) => {
 
     useEffect(() => {
         refresh();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search]);
 
     const addNote = async (text) => {
